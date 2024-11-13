@@ -1,0 +1,118 @@
+**Relatório: Aplicação de Programação Orientada a Objetos em Java no Contexto Empresarial na Empresa Tech Solutions**
+
+
+**Título do Trabalho**: Aplicação de POO em Java na Empresa Tech Solutions  
+**Nome do Integrante**: Hugo Arcanjo Jacob  
+**Data**: [13/11/2024]  
+
+
+**Introdução**
+
+A empresa Tech Solutions é especializada no desenvolvimento de soluções de software para clientes empresariais de diferentes setores, incluindo o setor de tecnologia e varejo. Devido à complexidade e à necessidade de personalização de suas soluções, a Tech Solutions adota a Programação Orientada a Objetos (POO) em Java para criar sistemas flexíveis, modulares e fáceis de manter. Esse paradigma permite que a empresa otimize o desenvolvimento dos seus projetos, reutilize componentes de código e simplifique a manutenção, fatores essenciais para atender às demandas dos clientes de forma eficaz.
+
+
+**Classes e Objetos**
+
+Na Tech Solutions, cada entidade do sistema é representada como uma classe Java, que encapsula tanto os dados quanto os comportamentos específicos de cada módulo. Exemplos comuns incluem as classes `Cliente`, `Produto`, `Pedido` e `Fatura`. 
+
+**Exemplo de Classes**: A classe `Cliente` possui atributos como `nome`, `cpf`, `endereco`, enquanto a classe `Produto` possui `nomeProduto`, `codigo`, e `preco`. Os métodos dessas classes permitem interações essenciais para o sistema, como `atualizarCadastro()` na classe `Cliente` e `calcularPrecoTotal()` na classe `Produto`.
+
+Através do uso de classes e objetos, a Tech Solutions consegue organizar os módulos de seus sistemas de maneira eficiente, facilitando a manutenção e atualização de partes específicas sem impactar o sistema como um todo.
+
+**Diagrama UML: Classes e Objetos**
+
+```plaintext
++----------------+          +----------------+         +----------------+          +----------------+
+|    Cliente     |          |    Produto    |         |     Pedido     |          |     Fatura     |
++----------------+          +----------------+         +----------------+          +----------------+
+| - nome         |          | - nomeProduto |         | - dataPedido   |          | - numero       |
+| - cpf          |          | - codigo      |         | - listaProdutos|          | - data         |
+| - endereco     |          | - preco       |         | - total        |          | - valorTotal   |
++----------------+          +----------------+         +----------------+          +----------------+
+| + atualizarCadastro() |   | + calcularPrecoTotal()|  | + adicionarProduto()|     | + gerarFatura()|
+| + consultarHistorico()|   |                        |  | + calcularTotal()    |     |                |
++------------------------+   +------------------------+  +-----------------------+     +----------------+
+```
+
+
+**Herança e Polimorfismo**
+
+Para otimizar o desenvolvimento de suas soluções, a Tech Solutions utiliza herança para criar hierarquias de classes que permitem o reaproveitamento de código e a especialização de funcionalidades.
+
+**Exemplo de Herança**: A classe `Funcionario` é uma superclasse da qual são derivadas as classes `Gerente`, `Desenvolvedor`, e `Analista`. Cada uma dessas subclasses herda os atributos e métodos comuns da classe `Funcionario`, como `nome`, `cpf`, e `salario`, e adiciona métodos específicos. A classe `Gerente`, por exemplo, possui o método `aprovarProjeto()`, enquanto a classe `Desenvolvedor` possui o método `escreverCodigo()`.
+
+**Polimorfismo**: Esse conceito permite que a Tech Solutions trate objetos de diferentes subclasses de forma uniforme. O método `calcularSalario()` na classe `Funcionario` pode ser redefinido em `Gerente` e `Desenvolvedor`, aplicando o polimorfismo para adaptar o cálculo de salário a cada tipo específico de funcionário, evitando o uso excessivo de condicionais e tornando o código mais flexível.
+
+**Diagrama UML: Herança e Polimorfismo**
+
+```plaintext
+                    +-----------------+
+                    |   Funcionario   |
+                    +-----------------+
+                    | - nome          |
+                    | - cpf           |
+                    | - salario       |
+                    +-----------------+
+                    | + calcularSalario() |
+                    +-----------------+
+                          |
+    +----------------------+------------------------+
+    |                      |                        |
++-------------+      +-------------+          +-------------+
+|   Gerente   |      | Desenvolvedor|          |  Analista   |
++-------------+      +-------------+          +-------------+
+| +aprovarProjeto()| | +escreverCodigo()|     | +analisarDados()|
++------------------+  +------------------+     +------------------+
+```
+
+
+**Interfaces e Agrupamento de Objetos**
+
+Para garantir a consistência das funcionalidades implementadas por diferentes classes, a Tech Solutions utiliza interfaces e o agrupamento de objetos.
+
+**Exemplo de Interface**: A interface `Autenticavel` define o método `autenticar()`, implementado por classes como `Funcionario` e `Cliente`. Dessa forma, qualquer classe que necessite autenticação seguirá o mesmo padrão, permitindo um controle centralizado da segurança do sistema.
+
+**Agrupamento de Objetos**: A Tech Solutions utiliza coleções para organizar objetos que compartilham uma funcionalidade similar. Por exemplo, todos os objetos `Pedido` de um cliente podem ser armazenados em uma lista chamada `HistoricoDePedidos`, permitindo operações em lote, como calcular o valor total dos pedidos de um cliente ou exibir todo o histórico em uma única visualização.
+
+**Diagrama UML: Interfaces e Agrupamento de Objetos**
+
+```plaintext
+                      +------------------+
+                      |  Autenticavel    |
+                      +------------------+
+                      | + autenticar()   |
+                      +------------------+
+                               ^
+                               |
+       +------------------------+----------------------+
+       |                        |                      |
++-------------+          +-------------+          +-------------+
+|  Funcionario|          |   Cliente   |          |   Pedido    |
++-------------+          +-------------+          +-------------+
+| - nome      |          | - nome      |          | - data      |
+| - cpf       |          | - cpf       |          | - listaProd |
++-------------+          +-------------+          +-------------+
+| + autenticar()|        | + autenticar()|       | + calcularTotal()|
++---------------+        +---------------+       +------------------+
+                               |
+                   +-----------------------+
+                   | HistoricoDePedidos    |
+                   +-----------------------+
+                   | - listaPedidos: List<Pedido> |
+                   +-----------------------------+
+                   | + adicionarPedido()         |
+                   | + exibirHistorico()         |
+                   +-----------------------------+
+```
+
+
+**Conexão com o Ambiente Corporativo**
+
+A aplicação de conceitos de POO em Java na Tech Solutions contribui para uma organização robusta e modular dos projetos, facilitando a adaptação a novas demandas e requisitos. A utilização de uma estrutura baseada em classes e interfaces permite que a empresa crie sistemas de forma eficiente e escalável, promovendo a reutilização de código e a centralização de funcionalidades comuns.
+
+Para auxiliar no desenvolvimento, a Tech Solutions utiliza uma IDE Java, como o IntelliJ IDEA, que oferece recursos avançados, como autocompletar, depuração, e integração com ferramentas de controle de versão. Esses recursos permitem que a equipe de desenvolvimento aplique os conceitos de POO com agilidade e qualidade, mantendo a organização do código e garantindo a colaboração eficiente entre os desenvolvedores.
+
+
+**Entrega e Formatação**
+
+Este relatório foi elaborado seguindo as diretrizes de linguagem formal, com revisão gramatical e ortográfica. O conteúdo reflete a importância e a aplicação dos conceitos de POO no contexto corporativo da Tech Solutions, evidenciando o impacto positivo dessas práticas na estrutura e eficiência dos projetos desenvolvidos.
